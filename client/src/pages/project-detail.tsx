@@ -114,8 +114,22 @@ export default function ProjectDetail() {
         </div>
       </div>
 
-      {/* Tabs Content */}
-      <div className="px-5 mt-4">
+      {/* Pending Actions CTA + Tabs Content */}
+      <div className="px-5 mt-4 space-y-3">
+        <div className="flex justify-end">
+          <Button
+            size="sm"
+            className="rounded-full px-4 py-2 text-xs font-medium shadow-sm"
+            variant="secondary"
+            onClick={() => {
+              if (projectId) {
+                navigate(`/project/${projectId}/pending-actions`);
+              }
+            }}
+          >
+            View Pending Actions
+          </Button>
+        </div>
         <Tabs defaultValue="workflow" className="w-full">
           <TabsList className="w-full grid grid-cols-4 bg-transparent p-0 gap-2 h-auto mb-4">
             {["Workflow", "Files", "Report & Analytics", "Others"].map((tab) => (

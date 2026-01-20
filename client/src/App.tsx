@@ -32,6 +32,7 @@ import SettingsPage from "@/pages/settings";
 import EditProfile from "@/pages/edit-profile";
 import { AuthProvider } from "@/lib/auth-context";
 import ProjectPendingTaskPage from "@/pages/ProjectPendingTaskPage";
+import ProjectPendingActionsPage from "@/pages/ProjectPendingActionsPage";
 import ReportsPage from "@/pages/ReportsPage";
 
 import Register from "./pages/register";
@@ -45,6 +46,7 @@ function Router() {
       <ProtectedRoute path="/" component={Dashboard} />
       <ProtectedRoute path="/projects" component={ProjectList} />
       <ProtectedRoute path="/project/:id" component={ProjectDetail} />
+      <ProtectedRoute path="/project/:id/pending-actions" component={ProjectPendingActionsPage} />
       <ProtectedRoute path="/project/:id/contacts" component={ProjectContactsPage} />
       <ProtectedRoute path="/tasks" component={Tasks} />
       <ProtectedRoute path="/add-task" component={AddTask} />
