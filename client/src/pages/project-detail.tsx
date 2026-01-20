@@ -1,32 +1,24 @@
 import { MobileLayout } from "@/components/layout/MobileLayout";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
   ArrowLeft,
-  MapPin,
-  MoreVertical,
-  FileText,
-  Calendar,
-  AlertCircle,
-  TrendingUp,
-  LayoutDashboard,
-  FileCheck,
-  Share2,
-  Download,
-  Plus,
   Building2,
-  FileSpreadsheet,
   Database,
+  FileSpreadsheet,
+  FileText,
+  MapPin,
+  Plus
 } from "lucide-react";
-import { PieChart, Pie, Cell, Tooltip } from "recharts"
+import { Cell, Pie, PieChart, Tooltip } from "recharts";
 
-import { Link, useRoute, useLocation } from "wouter";
-import ProjectWorkflow, { WorkflowStatus } from "@/components/ProjectWorkflow";
 import Others from "@/components/Others";
+import ProjectWorkflow, { WorkflowStatus } from "@/components/ProjectWorkflow";
+import { Link, useLocation, useRoute } from "wouter";
 
 export const pieData = [
   { name: "Critical Path", value: 28 },
@@ -35,8 +27,9 @@ export const pieData = [
   { name: "Reporting", value: 16 },
 ]
 
-import { MOCK_PROJECTS } from "@/data/mockProjects";
 import GanttGraph2 from "@/components/GanttGraph2";
+import Files from "@/components/project-workflow.tsx/Files";
+import { MOCK_PROJECTS } from "@/data/mockProjects";
 
 export default function ProjectDetail() {
   const [match, params] = useRoute("/project/:id");
@@ -141,37 +134,7 @@ export default function ProjectDetail() {
           </TabsContent>
 
           <TabsContent value="files" className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {["Tender Documents", "Approvals & NOCs", "Drawings", "Invoices"].map((category, i) => (
-              <Card key={i} className="border-none shadow-sm overflow-hidden">
-                <CardHeader className="bg-secondary/30 py-3 px-4 flex flex-row items-center justify-between space-y-0">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-background rounded-md shadow-sm">
-                      <FileText className="h-4 w-4 text-primary" />
-                    </div>
-                    <CardTitle className="text-sm font-medium">{category}</CardTitle>
-                  </div>
-                  <Badge variant="outline" className="text-[10px] bg-background">3 Files</Badge>
-                </CardHeader>
-                <div className="divide-y divide-border/50">
-                  {[1, 2].map((file) => (
-                    <div key={file} className="p-3 flex items-center justify-between hover:bg-secondary/10 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">
-                          PDF
-                        </div>
-                        <div>
-                          <p className="text-xs font-medium text-foreground">Site_Plan_v{file}.pdf</p>
-                          <p className="text-[10px] text-muted-foreground">2.4 MB • 2 days ago</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="icon" className="h-8 w-8">
-                        <Download className="h-4 w-4 text-muted-foreground" />
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            ))}
+            <Files />
           </TabsContent>
 
           <TabsContent value="report & analytics" className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
